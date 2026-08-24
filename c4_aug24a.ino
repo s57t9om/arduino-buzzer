@@ -1,21 +1,20 @@
 const int numrow = 4;
 const int numcol = 4;
-const char arrange[4][4] = {
+const char arrange[numrow][numcol] = {
     {'1', '2', '3', 'A'},
     {'4', '5', '6', 'B'},
     {'7', '8', '9', 'C'},
     {'*', '0', '#', 'D'}
 };
-const int rowpin[4] = {13, 12, 11, 10};
-const int colpin[4] = {9, 8, 7, 6};
+const int rowpin[numrow] = {13, 12, 11, 10};
+const int colpin[numcol] = {9, 8, 7, 6};
 const int staytime = 1;
-char key;
 char a;
 
 char getkey() {
-    for (int q = 0; q < 4; q++) {
+    for (int q = 0; q < numcol; q++) {
         digitalWrite(colpin[q], LOW);
-        for (int w = 0; w < 4; w++) {
+        for (int w = 0; w < numrow; w++) {
             if (digitalRead(rowpin[w]) == LOW) {
                 delay(staytime);
                 while (digitalRead(rowpin[w]) == LOW) {
